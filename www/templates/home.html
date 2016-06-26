@@ -1,0 +1,27 @@
+<ion-view view-title="LifeStyle">
+ <div class="tabs-striped tabs-color-assertive">
+    <ul class="tabs">
+        <li ng-class="{active:isSelected(1)}" class="tab-item">
+            <a ng-click="select(1)">HOME</a></li>
+        <li ng-class="{active:isSelected(2)}" class="tab-item">
+            <a ng-click="select(2)">HEALTH</a></li>
+        <li ng-class="{active:isSelected(3)}" class="tab-item">
+            <a ng-click="select(3)">NEWS</a></li>
+        <li ng-class="{active:isSelected(4)}" class="tab-item">
+            <a  ng-click="select(4)">LIFE</a></li>
+    </ul>
+  </div>
+  <ion-content>
+    <ion-list>
+         <ion-item ng-repeat="post in posts | filter:{category: filtText} | orderBy:'-date'" href="#/app/home/{{post.id}}" class="item-thumbnail-left">
+        <img ng-src="{{baseURL+post.image}}">
+        <h2>{{post.name}}</h2>
+         <p><span style="font-size:75%">{{post.date}}</span></p>
+        <p>{{post.description}}</p>
+        <ion-option-button class="button-dark icon ion-plus-circled"
+            ng-click="addFavorite({{post.id}})">
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,29 @@
+<ion-view view-title="Read Post">
+<ion-nav-buttons side="secondary">    
+    <div class="buttons">      
+        <button class="button button-icon icon ion-more" ng-click="openPopover($event)"></button>    
+    </div>  
+</ion-nav-buttons>
+  <ion-content>
+      <div class="card">
+          <div class="item item-body item-text-wrap">
+               <img class="full-image" ng-src="{{baseURL+post.image}}" >
+                <h2>{{post.name}}</h2>
+                <p>{{post.description}}</p>
+          </div>
+      </div>
+      <div class="row">
+            <div class="col col-offset-10">
+                   <h4> Comments</h4>
+                    <ul class="list">
+                        <li ng-repeat="comment in post.comments | orderBy:orderText">
+                          <blockquote>
+                            <header>{{comment.author}}, {{comment.date | date:'MMM. dd, yyyy'}}</header>
+                             <p>{{comment.comment}}</p>
+                          </blockquote>
+                        </li>
+                    </ul>
+            </div>
+      </div>
+  </ion-content>
+</ion-view>
